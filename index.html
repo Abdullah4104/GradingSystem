@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+</head>
+<style>
+    body {
+        background-color: lightgreen;
+        background-image: conic-gradient(from var(--angle), rgb(130, 233, 156), rgb(130, 233, 156), rgb(130, 233, 156));
+        animation: 1s spin linear infinite;
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    .wrap {
+        background-image: conic-gradient(from var(--angle), rgb(70, 173, 96), rgb(38, 188, 68), rgb(52, 196, 86));
+        animation: 1s spin linear infinite;
+        width: 500px;
+        background-color: green;
+        border-radius: 10px;
+        margin-top: 200px;
+        padding: 20px;
+        min-width: 20rem;
+    }
+
+     @keyframes spin {
+        from {
+            --angle: 0deg;
+
+        }
+
+        to {
+            --angle: 360deg
+        }
+    } 
+
+    p {
+        text-align: center;
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+    }
+
+    input {
+        max-width: 60%;
+    }
+
+    button {
+        max-width: 20%;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <div class="wrap">
+            <p>Grading System</p>
+            <div style="padding: 10px; display: flex; justify-content: center; align-items: center;">
+                <input style="padding: 12px;width: 300px;" placeholder="Enter your score" type="number" id="scoreInput">
+                <button onclick="check()" style="padding: 12px;width: 100px;">Check</button>
+
+            </div>
+            <div style="padding: 10px; display: flex; justify-content: center; align-items: center;">
+                <input style="padding: 12px;width: 300px;" placeholder="View Grade" type="text" id="viewGrade">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let scoreInput = document.getElementById('scoreInput')
+        let viewScore = document.getElementById('viewGrade')
+let audio1=new Audio("./excellent.m4a") ;
+let audio2=new Audio("./veryGood.m4a") ;
+let audio3=new Audio("./good.m4a") ;
+
+        function check() {
+            console.log(scoreInput.value);
+
+            if (scoreInput.value > 69 && scoreInput.value < 100) {
+                audio1.play();
+                viewScore.value = 'A - Excellent'
+                
+            } else if (scoreInput.value > 59 && scoreInput.value < 70) {
+                audio2.play()
+                viewScore.value = 'B - Very Good'
+            } else if (scoreInput.value > 49 && scoreInput.value < 60) {
+                audio3.play()
+                viewScore.value = 'C - Good'
+            } else if (scoreInput.value > 44 && scoreInput.value < 50) {
+                viewScore.value = 'D - fair'
+            } else if (scoreInput.value > 39 && scoreInput.value < 45) {
+                viewScore.value = 'E - Poor'
+            } else if (scoreInput.value < 40 && scoreInput.value > 0) {
+                viewScore.value = 'F -Fail'
+            } else {
+                viewScore.value = 'Invalid'
+            }
+            scoreInput.value=''
+
+        }
+
+
+    </script>
+</body>
+
+</html
